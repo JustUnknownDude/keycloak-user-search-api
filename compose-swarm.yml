@@ -1,0 +1,15 @@
+services:
+  stormwall-exporter:
+    image: kcsearch-api:latest
+    ports:
+      - 8000:8000
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    networks:
+      - kcsearch-api-network
+networks:
+  kcsearch-api-network:
+    driver: overlay
